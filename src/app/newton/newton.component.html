@@ -1,0 +1,96 @@
+<h1>Newton-Raphson</h1>
+
+<mat-card style="margin: 20px; padding: 5px;">
+<form class="example-form" [formGroup]="myForm">
+  <mat-form-field>
+    <mat-label>Función diferencial Y' = ...</mat-label>
+    <input matInput formControlName="funcion" placeholder="Ex. 0.4 * X * Y" value="x + y" />
+    <mat-error> Valor inválido </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Función diferencial Y' = ...</mat-label>
+    <input matInput formControlName="derivada" placeholder="Ex. 0.4 * X * Y" value="x + y" />
+    <mat-error> Valor inválido </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Condición inicial X0</mat-label>
+    <input matInput formControlName="condicionX" placeholder="Ex. 1" value="1" />
+    <mat-error> Valor inválido </mat-error>
+  </mat-form-field>
+
+  <button 
+  mat-raised-button 
+  color="primary" 
+  [disabled]="myForm.invalid"
+  (click)="calcular()"
+  >Calcular</button>
+
+  <br>
+
+  <h2> Detener hasta que precisión de decimales = :</h2>
+
+  <mat-form-field>
+    <mat-label>Decimales</mat-label>
+    <input matInput formControlName="xnfinal" placeholder="2" value="2" />
+    <mat-error> Valor inválido </mat-error>
+  </mat-form-field>
+
+  <button 
+  mat-raised-button 
+  color="primary" 
+  [disabled]="myForm.invalid"
+  (click)="calcularXnFinal()"
+  >Calcular</button>
+
+  <br>
+
+  <h2> Calcular n veces:</h2>
+
+  <mat-form-field>
+    <mat-label>Iteraciones</mat-label>
+    <input matInput formControlName="iteraciones" placeholder="Ex. 50" value="50" />
+    <mat-error> Valor inválido </mat-error>
+  </mat-form-field>
+
+  <button 
+  mat-raised-button 
+  color="primary" 
+  [disabled]="myForm.invalid"
+  (click)="calcularNVeces()"
+  >Calcular</button>
+</form>
+</mat-card>
+
+<div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>n</th>
+          <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+        </ng-container>
+      
+        <!-- XValue -->
+        <ng-container matColumnDef="xvalue">
+          <th mat-header-cell *matHeaderCellDef>Xn</th>
+          <td mat-cell *matCellDef="let element">{{ element.xvalue }}</td>
+        </ng-container>
+      
+        <!-- F(X) -->
+        <ng-container matColumnDef="funVal">
+          <th mat-header-cell *matHeaderCellDef>F(Xn)</th>
+          <td mat-cell *matCellDef="let element">{{ element.funVal }}</td>
+        </ng-container>
+      
+        <!-- F'(X) -->
+        <ng-container matColumnDef="derVal">
+          <th mat-header-cell *matHeaderCellDef>F'(Xn)</th>
+          <td mat-cell *matCellDef="let element">{{ element.derVal }}</td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+</div>
+

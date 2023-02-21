@@ -1,0 +1,29 @@
+.menu-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-sizing: border-box;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu-opiton{
+    width: 100%;
+    height: 20vh;
+    background-color: steelblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-opiton:hover{
+    background-color: rgb(108, 167, 215);
+}
+
+.menu-opiton h1{
+    color: white;
+    font-size: 60px;
+}
